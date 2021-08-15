@@ -2,10 +2,10 @@ namespace CardGame.Models
 {
     public class Card
     {
-        private static string[] suits = {"Clubs", "Diamonds", "Hearts", "Spades" };
+        public static string[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
         public string Suit {get; private set;}
         public static short Value {get; private set;}
-        public Card(int sIdx, int value)
+        public Card(int sIdx, short value)
         {
             Suit = suits[sIdx];
             Value = value;
@@ -14,18 +14,19 @@ namespace CardGame.Models
         {
             get 
             { 
-                switch(value)
+                string suitString = $" of {Suit}";
+                switch(Value)
                 {
                     case 13:
-                        return "King";
+                        return $"King{suitString}";
                     case 12:
-                        return "Queen";
+                        return $"Queen{suitString}";
                     case 11:
-                        return "Jack";
+                        return $"Jack{suitString}";
                     case 1:
-                        return "Ace";
+                        return $"Ace{suitString}";
                     default:
-                        return value.ToString();
+                        return $"{Value.ToString()}{suitString}";
                 }
             } 
         }

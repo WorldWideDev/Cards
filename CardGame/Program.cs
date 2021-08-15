@@ -1,4 +1,7 @@
 ﻿using System;
+using CardGame.Models;
+using CardGame.Views;
+using CardGame.Views.Utilities;
 
 namespace CardGame
 {
@@ -6,7 +9,10 @@ namespace CardGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CardDeck deck = new CardDeck();
+            Card card = deck.Deal(); 
+            Console.WriteLine(card.DisplayValue);
+            CardRenderer.Render(card);
         }
     }
 }
