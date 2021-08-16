@@ -12,7 +12,7 @@ namespace CardGame
             CardDeck deck = new CardDeck();
             Card card = deck.Deal(); 
             Console.WriteLine(card.DisplayValue);
-            CardRenderer.Render(card);
+            CardRenderer.Render(card, CardSize.Large);
         }
     }
 }

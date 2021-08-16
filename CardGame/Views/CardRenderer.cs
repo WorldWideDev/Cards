@@ -15,7 +15,8 @@ namespace CardGame.Views
         public static void Render(Card card, CardSize size)
         {
             CardDimension dimension = new CardDimension(size);
-            int rowLen = (dimension.Width * 2)%2==0 ? dimension.Width*2-1 : dimension.Width*2;
+            // int rowLen = (dimension.Width * 2)%2==0 ? dimension.Width*2-1 : dimension.Width*2;
+            int rowLen = dimension.Width;
             int colLen = dimension.Length;
             for(int y = 0; y < colLen; ++y)
             {
@@ -41,8 +42,8 @@ namespace CardGame.Views
             x%card.SizeMultiplier==0 && (y == 0 || y == card.Length - 1);
         
         private static bool renderSuit(int x, int y, CardDimension card) =>
-            (y == 1 || y == card.Length - 1 - card.SizeMultiplier) &&
-            x == card.SizeMultiplier || x == card.Width - card.SizeMultiplier;
+            (y == card.SizeMultiplier && x == card.SizeMultiplier) ||
+            (y == card.Length - 1 - card.SizeMultiplier && x == card.Width - 1 - card.SizeMultiplier);
 
         private static char suitCharacter(string suit)
         {
