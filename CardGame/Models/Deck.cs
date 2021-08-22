@@ -3,9 +3,10 @@ namespace CardGame.Models
 {
     public class CardDeck
     {
-        public List<Card> Deck {get; private set;} = new List<Card>();
+        public List<Card> Deck {get; private set;}
         public CardDeck()
         {
+            Deck = new List<Card>();
             // i => suit idx [clubs, diamonds, hearts, spades]
             for(short i=0; i<4; i++)
             {
@@ -13,7 +14,8 @@ namespace CardGame.Models
                 // j => card values (1 - 13)
                 for(short j=1; j<14; j++)
                 {
-                    Deck.Add(new Card(i, j));
+                    Card card = new Card(i, j);
+                    Deck.Add(card);
                 }
             }
         }

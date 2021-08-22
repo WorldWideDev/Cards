@@ -10,8 +10,8 @@ namespace CardGame.Views.Utilities
     public class CardDimension
     {
         // GLOBALS
-        private static int minX = 5;
-        private static int minY = 5;
+        private static int minX = 8;
+        private static int minY = 6;
         private static int[] SizeMultipliers = new int[] { 1, 2, 3 };
 
         // PROPS

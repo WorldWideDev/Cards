@@ -10,8 +10,8 @@ namespace CardGame.Views
         {
             Render(card, CardSize.Small);
         }
-        private static int xSpacing = 1;
-        private static int xOffset = xSpacing * 2;
+        // private static int xSpacing = 1;
+        // private static int xOffset = xSpacing * 2;
         public static void Render(Card card, CardSize size)
         {
             CardDimension dimension = new CardDimension(size);
@@ -30,12 +30,15 @@ namespace CardGame.Views
                     
                     else if(renderSuit(x, y, dimension))
                         str.Append(suitCharacter(card.Suit));
+                    else if(renderValue(x, y, dimension))
+                        str.Append(card.DisplayValueShort);
                     else
                         str.Append(' ');
                 }
                 Console.WriteLine(str.ToString());
             }
         }
+        
         private static bool renderBorder(int x, int y, CardDimension card) => 
             // if top/bottom row render every other column
             (x == 0 || x == card.Width - 1) || 
@@ -44,6 +47,10 @@ namespace CardGame.Views
         private static bool renderSuit(int x, int y, CardDimension card) =>
             (y == card.SizeMultiplier && x == card.SizeMultiplier) ||
             (y == card.Length - 1 - card.SizeMultiplier && x == card.Width - 1 - card.SizeMultiplier);
+        
+        private static bool renderValue(int x, int y, CardDimension card) =>
+            (y == card.SizeMultiplier && x == card.Width - 1 - card.SizeMultiplier) ||
+            (y == card.Length - 1 - card.SizeMultiplier && x == card.SizeMultiplier);
 
         private static char suitCharacter(string suit)
         {

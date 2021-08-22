@@ -1,15 +1,20 @@
+using System;
 namespace CardGame.Models
 {
     public class Card
     {
         public static string[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
         public string Suit {get; private set;}
-        public static short Value {get; private set;}
+        public short Value {get; private set;}
         public Card(int sIdx, short value)
         {
             Suit = suits[sIdx];
             Value = value;
         }
+        private bool isFaceCard => Value == 1 || Value > 10;
+        public char DisplayValueShort => 
+            isFaceCard ? DisplayValue[0] : Value == 10 ? 'T' : DisplayValue[0];
+        
         public string DisplayValue 
         {
             get 
