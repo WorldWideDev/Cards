@@ -12,6 +12,7 @@ namespace CardGame
         {
 
             CardDeck deck = new CardDeck();
+            deck.Shuffle();
             
             for(int i = 0; i < 11; i++)
             {

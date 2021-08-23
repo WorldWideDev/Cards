@@ -4,36 +4,36 @@ namespace CardGame.Models
     public class Card
     {
         public static string[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+        private short _value;
         public string Suit {get; private set;}
-        public short Value {get; private set;}
         public Card(int sIdx, short value)
         {
             Suit = suits[sIdx];
-            Value = value;
+            _value = value;
         }
-        private bool isFaceCard => Value == 1 || Value > 10;
-        public char DisplayValueShort => 
-            isFaceCard ? DisplayValue[0] : Value == 10 ? 'T' : DisplayValue[0];
-        
-        public string DisplayValue 
+        public string Value
         {
             get 
             { 
-                string suitString = $" of {Suit}";
-                switch(Value)
+                switch(_value)
                 {
                     case 13:
-                        return $"King{suitString}";
+                        return "King";
                     case 12:
-                        return $"Queen{suitString}";
+                        return "Queen";
                     case 11:
-                        return $"Jack{suitString}";
+                        return "Jack";
                     case 1:
-                        return $"Ace{suitString}";
+                        return "Ace";
                     default:
-                        return $"{Value.ToString()}{suitString}";
+                        return _value.ToString();
                 }
             } 
         }
+        public string DisplayValue => $"{Value.ToString()} of {Suit}";
+        public char DisplayValueShort => 
+            isFaceCard ? DisplayValue[0] : _value == 10 ? 'T' : DisplayValue[0];
+        private bool isFaceCard => _value == 1 || _value > 10;
+        
     }
 }
