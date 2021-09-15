@@ -10,15 +10,8 @@ namespace CardGame
     {
         static void Main(string[] args)
         {
-
-            CardDeck deck = new CardDeck();
-            deck.Shuffle();
-            
-            for(int i = 0; i < 11; i++)
-            {
-                Console.WriteLine(deck.Deck[i].DisplayValue);
-                CardRenderer.Render(deck.Deck[i], CardSize.Medium);
-            }
+            var grid = BoxRenderer.BuildGrid(8, "Mom");
+            BoxRenderer.RenderBox(grid);
         }
     }
 }
